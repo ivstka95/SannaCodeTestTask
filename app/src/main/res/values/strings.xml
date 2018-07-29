@@ -17,4 +17,16 @@
     <string name="wanna_go_to_settings">Looks like network connection is not configured. Would you like to do it?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="summmary">Summary: %s</string>
+    <string name="humidity">Humidity %f</string>
+    <string name="pressure">Pressure %f</string>
+    <string name="wind">Wind speed %f</string>
+    <string name="temperature">Temperature %f</string>
+    <string name="last_sync">Last sync: %s</string>
+    <string name="time">Time</string>
+    <string name="temperature_">Temperature</string>
+    <string name="pressure_">Pressure</string>
+    <string name="humidity_">Humidity</string>
+    <string name="wind_">Wind speed</string>
+    <string name="precip">Precipitation probability</string>
 </resources>

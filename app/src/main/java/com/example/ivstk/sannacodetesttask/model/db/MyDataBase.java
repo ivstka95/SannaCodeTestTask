@@ -8,8 +8,7 @@ import android.content.Context;
 
 import com.example.ivstk.sannacodetesttask.R;
 import com.example.ivstk.sannacodetesttask.model.db.converters.CurrentlyConverter;
-import com.example.ivstk.sannacodetesttask.model.db.converters.DailyConverter;
-import com.example.ivstk.sannacodetesttask.model.db.converters.HourlyConverter;
+import com.example.ivstk.sannacodetesttask.model.db.converters.ForecastDataSetConverter;
 import com.example.ivstk.sannacodetesttask.model.entity.forecast.Forecast;
 
 
@@ -17,8 +16,8 @@ import com.example.ivstk.sannacodetesttask.model.entity.forecast.Forecast;
  * Created by Ivan on 29.07.2018.
  */
 
-@Database(entities = {Forecast.class}, version = 3)
-@TypeConverters({CurrentlyConverter.class, HourlyConverter.class, DailyConverter.class})
+@Database(entities = {Forecast.class}, version = 4)
+@TypeConverters({CurrentlyConverter.class, ForecastDataSetConverter.class})
 public abstract class MyDataBase extends RoomDatabase {
 
     private static MyDataBase INSTANCE;

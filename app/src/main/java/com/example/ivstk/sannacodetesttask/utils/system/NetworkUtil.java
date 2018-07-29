@@ -1,4 +1,4 @@
-package com.example.ivstk.sannacodetesttask.utils.view.system;
+package com.example.ivstk.sannacodetesttask.utils.system;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

@@ -8,6 +8,8 @@ import com.example.ivstk.sannacodetesttask.di.AppComponent;
 import com.example.ivstk.sannacodetesttask.di.DaggerAppComponent;
 
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -43,6 +45,8 @@ public class ForecastApplication extends Application {
         sAppComponent = DaggerAppComponent.builder()
                 .context(this)
                 .build();
+        JodaTimeAndroid.init(this);
+
 //        sAppComponent.inject(this);
 //        CrashlyticsCore core = new CrashlyticsCore.Builder()
 //                .disabled(BuildConfig.DEBUG)

@@ -2,7 +2,6 @@ package com.example.ivstk.sannacodetesttask.presentation.presenter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -10,7 +9,7 @@ import com.example.ivstk.sannacodetesttask.ForecastApplication;
 import com.example.ivstk.sannacodetesttask.R;
 import com.example.ivstk.sannacodetesttask.model.repo.ForecastRepo;
 import com.example.ivstk.sannacodetesttask.presentation.view.ForecastView;
-import com.example.ivstk.sannacodetesttask.utils.view.system.NetworkUtil;
+import com.example.ivstk.sannacodetesttask.utils.system.NetworkUtil;
 
 import javax.inject.Inject;
 
@@ -22,7 +21,6 @@ public class ForecastPresenter extends BasePresenter<ForecastView> {
     private int selectedCityId;
     private boolean shouldFetch = true;
 
-    private static final String TAG = "ForecastPresenterImpl";
     @Inject
     ForecastRepo forecastRepo;
     @Inject
@@ -33,7 +31,7 @@ public class ForecastPresenter extends BasePresenter<ForecastView> {
     public ForecastPresenter() {
         ForecastApplication.getAppComponent().inject(this);
         selectedCityId = getLastCityId();
-        Log.e(TAG, "ForecastPresenter: constructor");
+        Log.e(toString(), "ForecastPresenter: constuctor");
     }
 
     private void saveLastCityId() {
@@ -60,16 +58,15 @@ public class ForecastPresenter extends BasePresenter<ForecastView> {
     }
 
     private void fetchForecast() {
-        Log.e(TAG, "fetchForecast: connected " + NetworkUtil.isNetworkConnected(context));
+        Log.e(toString(), "fetchForecast: ");
         if (NetworkUtil.isNetworkConnected(context)) {
+            getViewState().showProgress();
             Disposable disposable = forecastRepo.fetchForecast(selectedCityId, getCoordinatesForCity())
                     .subscribe(forecast -> {
-                                Log.e(TAG, "fetchForecast: " + getTitleResForCity());
                                 getViewState().showForecast(forecast, getTitleResForCity());
                                 shouldFetch = false;
                             },
                             throwable -> {
-                                Log.e(TAG, "fetchForecast: ", throwable);
                                 getViewState().hideProgress();
                                 getViewState().showErrorOccured();
                             },
@@ -117,7 +114,6 @@ public class ForecastPresenter extends BasePresenter<ForecastView> {
     }
 
     private void loadCache() {
-        Log.e(TAG, "loadCache: " + getTitleResForCity());
         Disposable disposable = forecastRepo.getForecastFromCache(selectedCityId)
                 .subscribe(forecast -> getViewState().showForecast(forecast, getTitleResForCity()));
         disposeOnDestroy(disposable);

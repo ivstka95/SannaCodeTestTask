@@ -31,10 +31,10 @@ public class Forecast {
     private Currently currently;
     @SerializedName("hourly")
     @Expose
-    private Hourly hourly;
+    private ForecastDataSet hurly;
     @SerializedName("daily")
     @Expose
-    private Daily daily;
+    private ForecastDataSet daily;
 
     public int getCityId() {
         return cityId;
@@ -84,30 +84,30 @@ public class Forecast {
         this.currently = currently;
     }
 
-    public Hourly getHourly() {
-        return hourly;
+    public ForecastDataSet getHurly() {
+        return hurly;
     }
 
-    public void setHourly(Hourly hourly) {
-        this.hourly = hourly;
+    public void setHurly(ForecastDataSet hurly) {
+        this.hurly = hurly;
     }
 
-    public Daily getDaily() {
+    public ForecastDataSet getDaily() {
         return daily;
     }
 
-    public void setDaily(Daily daily) {
+    public void setDaily(ForecastDataSet daily) {
         this.daily = daily;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("latitude", latitude).append("longitude", longitude).append("timezone", timezone).append("currently", currently).append("hourly", hourly).append("daily", daily).toString();
+        return new ToStringBuilder(this).append("latitude", latitude).append("longitude", longitude).append("timezone", timezone).append("currently", currently).append("hourly", hurly).append("daily", daily).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(timezone).append(currently).append(longitude).append(latitude).append(hourly).append(daily).toHashCode();
+        return new HashCodeBuilder().append(timezone).append(currently).append(longitude).append(latitude).append(hurly).append(daily).toHashCode();
     }
 
     @Override
@@ -119,7 +119,7 @@ public class Forecast {
             return false;
         }
         Forecast rhs = ((Forecast) other);
-        return new EqualsBuilder().append(timezone, rhs.timezone).append(currently, rhs.currently).append(longitude, rhs.longitude).append(latitude, rhs.latitude).append(hourly, rhs.hourly).append(daily, rhs.daily).isEquals();
+        return new EqualsBuilder().append(timezone, rhs.timezone).append(currently, rhs.currently).append(longitude, rhs.longitude).append(latitude, rhs.latitude).append(hurly, rhs.hurly).append(daily, rhs.daily).isEquals();
     }
 
 }

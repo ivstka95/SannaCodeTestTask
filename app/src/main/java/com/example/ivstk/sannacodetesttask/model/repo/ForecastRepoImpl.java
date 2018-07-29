@@ -1,14 +1,12 @@
 package com.example.ivstk.sannacodetesttask.model.repo;
 
 import android.database.sqlite.SQLiteConstraintException;
-import android.util.Log;
 
 import com.example.ivstk.sannacodetesttask.ForecastApplication;
 import com.example.ivstk.sannacodetesttask.model.api.forecast.DarkSkyService;
 import com.example.ivstk.sannacodetesttask.model.db.ForecastDao;
 import com.example.ivstk.sannacodetesttask.model.entity.forecast.Forecast;
-
-import org.joda.time.DateTime;
+import com.example.ivstk.sannacodetesttask.utils.system.DateUtils;
 
 import javax.inject.Inject;
 
@@ -30,7 +28,7 @@ public class ForecastRepoImpl implements ForecastRepo {
                 .subscribeOn(Schedulers.io())
                 .doOnNext(forecast -> {
                     forecast.setCityId(cityId);
-                    forecast.setSyncDate(new DateTime().toString());
+                    forecast.setSyncDate(DateUtils.getLocalDateStamp());
                     saveInDB(forecast);
                 })
                 .observeOn(AndroidSchedulers.mainThread());

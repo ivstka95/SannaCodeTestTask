@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.ivstk.sannacodetesttask.ui.fragments.ForecastFragment;
+
 import java.util.List;
 
 public class SimplePagerAdapter extends FragmentPagerAdapter {

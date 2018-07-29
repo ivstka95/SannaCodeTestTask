@@ -9,7 +9,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Hourly {
+public class ForecastDataSet {
 
     @SerializedName("summary")
     @Expose
@@ -19,7 +19,7 @@ public class Hourly {
     private String icon;
     @SerializedName("data")
     @Expose
-    private List<HourPoint> data = null;
+    private List<DataPoint> data = null;
 
     public String getSummary() {
         return summary;
@@ -37,11 +37,11 @@ public class Hourly {
         this.icon = icon;
     }
 
-    public List<HourPoint> getData() {
+    public List<DataPoint> getData() {
         return data;
     }
 
-    public void setData(List<HourPoint> data) {
+    public void setData(List<DataPoint> data) {
         this.data = data;
     }
 
@@ -60,10 +60,10 @@ public class Hourly {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Hourly) == false) {
+        if ((other instanceof ForecastDataSet) == false) {
             return false;
         }
-        Hourly rhs = ((Hourly) other);
+        ForecastDataSet rhs = ((ForecastDataSet) other);
         return new EqualsBuilder().append(summary, rhs.summary).append(icon, rhs.icon).append(data, rhs.data).isEquals();
     }
 
