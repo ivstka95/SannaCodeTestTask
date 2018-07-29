@@ -3,10 +3,9 @@ package com.example.ivstk.sannacodetesttask.model.db;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
-import com.example.ivstk.sannacodetesttask.model.entity.Forecast;
-
-import java.util.List;
+import com.example.ivstk.sannacodetesttask.model.entity.forecast.Forecast;
 
 import io.reactivex.Maybe;
 
@@ -18,11 +17,11 @@ import io.reactivex.Maybe;
 public interface ForecastDao {
 
     @Insert
-    void insertEvents(Forecast forecast);
+    void insertForecast(Forecast forecast);
 
-    @Query("DELETE FROM Forecast")
-    int dropTable();
+    @Update
+    void updateForecast(Forecast forecast);
 
-    @Query("SELECT * FROM Forecast")
-    Maybe<Forecast> getForecast();
+    @Query("SELECT * FROM Forecast WHERE cityId =(:cityId)")
+    Maybe<Forecast> getForecast(int cityId);
 }

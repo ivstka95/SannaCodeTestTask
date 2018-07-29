@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/kyiv"
+        android:title="@string/kyiv"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/houston"
+        android:title="@string/houston"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/galveston"
+        android:title="@string/galveston"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/boston"
+        android:title="@string/boston"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/miami"
+        android:title="@string/miami"
+        app:showAsAction="never" />
+</menu>

@@ -3,8 +3,8 @@
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/srl"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
@@ -15,15 +15,14 @@
         android:fitsSystemWindows="true"
         tools:context=".ui.activities.ForecastActivity">
 
-
         <android.support.design.widget.AppBarLayout
-            android:id="@+id/app_bar"
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/toolbar_layout"
+                android:id="@+id/collapsingToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:contentScrim="?attr/colorPrimary"
@@ -44,8 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/AppTheme.PopupOverlay"
-                    app:title="@string/app_name" />
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
 
             </android.support.design.widget.CollapsingToolbarLayout>
 

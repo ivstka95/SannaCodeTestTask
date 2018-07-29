@@ -7,15 +7,18 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import com.example.ivstk.sannacodetesttask.R;
-import com.example.ivstk.sannacodetesttask.model.entity.Forecast;
+import com.example.ivstk.sannacodetesttask.model.db.converters.CurrentlyConverter;
+import com.example.ivstk.sannacodetesttask.model.db.converters.DailyConverter;
+import com.example.ivstk.sannacodetesttask.model.db.converters.HourlyConverter;
+import com.example.ivstk.sannacodetesttask.model.entity.forecast.Forecast;
 
 
 /**
- * Created by Ivan on 16.01.2018.
+ * Created by Ivan on 29.07.2018.
  */
 
-@Database(entities = {Forecast.class}, version = 1)
-@TypeConverters({})
+@Database(entities = {Forecast.class}, version = 3)
+@TypeConverters({CurrentlyConverter.class, HourlyConverter.class, DailyConverter.class})
 public abstract class MyDataBase extends RoomDatabase {
 
     private static MyDataBase INSTANCE;
@@ -26,7 +29,6 @@ public abstract class MyDataBase extends RoomDatabase {
                     Room.databaseBuilder(context.getApplicationContext(), MyDataBase.class,
                             context.getString(R.string.app_name))
                             .fallbackToDestructiveMigration()
-                            .allowMainThreadQueries()
                             .build();
         }
         return INSTANCE;

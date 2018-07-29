@@ -2,7 +2,6 @@ package com.example.ivstk.sannacodetesttask.di;
 
 import android.content.Context;
 
-import com.example.ivstk.sannacodetesttask.ForecastApplication;
 import com.example.ivstk.sannacodetesttask.model.repo.ForecastRepoImpl;
 import com.example.ivstk.sannacodetesttask.presentation.presenter.ForecastPresenter;
 
@@ -12,7 +11,7 @@ import dagger.BindsInstance;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {AppModule.class})
+@Component(modules = {ForecastModule.class})
 public interface AppComponent {
 
     void inject(ForecastPresenter presenter);
