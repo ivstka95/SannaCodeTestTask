@@ -5,21 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="80dp"
-    android:paddingTop="56dp">
+    android:paddingTop="26dp">
 
-
-    <TextView
-        android:id="@+id/tvSummary"
-        style="@style/HeaderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/summmary"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvHumidity"
@@ -31,7 +18,6 @@
         android:layout_marginTop="8dp"
         android:text="@string/humidity"
         app:layout_constraintEnd_toStartOf="@+id/tvTemperature"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSummary" />
@@ -59,7 +45,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/wind"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTempDegrees" />
 
     <TextView
         android:id="@+id/tvTemperature"
@@ -74,6 +60,20 @@
         app:layout_constraintStart_toEndOf="@+id/tvHumidity"
         app:layout_constraintTop_toBottomOf="@+id/tvSummary" />
 
+
+    <TextView
+        android:id="@+id/tvTempDegrees"
+        style="@style/LargeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemperature"
+        tools:text="243" />
+
     <TextView
         android:id="@+id/tvLastSync"
         style="@style/HeaderText"
@@ -83,5 +83,17 @@
         android:layout_marginTop="8dp"
         android:text="@string/last_sync"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTempDegrees" />
+
+    <TextView
+        android:id="@+id/tvSummary"
+        style="@style/HeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

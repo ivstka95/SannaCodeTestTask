@@ -18,7 +18,7 @@
     <string name="humidity">Humidity %f</string>
     <string name="pressure">Pressure %f</string>
     <string name="wind">Wind speed %f</string>
-    <string name="temperature">Temperature %f</string>
+    <string name="temperature">Temperature</string>
     <string name="last_sync">Last sync: %s</string>
     <string name="time">Time</string>
     <string name="temperature_">Temperature</string>

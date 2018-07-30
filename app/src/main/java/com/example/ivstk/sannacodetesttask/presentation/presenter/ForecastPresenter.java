@@ -42,7 +42,7 @@ public class ForecastPresenter extends BasePresenter<ForecastView> {
         return preferences.getInt(KEY_CITY_ID, R.id.kyiv);
     }
 
-    public void onCreate() {
+    public void onCreateViewState() {
         loadCache();
         if (shouldFetch)
             fetchForecast();
