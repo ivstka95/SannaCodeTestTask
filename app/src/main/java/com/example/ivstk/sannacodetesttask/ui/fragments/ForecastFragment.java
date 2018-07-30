@@ -1,6 +1,7 @@
 package com.example.ivstk.sannacodetesttask.ui.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,6 +30,7 @@ public class ForecastFragment extends Fragment {
     private Unbinder unbinder;
     private int index;
     private ForecastAdapter adapter;
+    private IFragmentReadyListener iFragmentReadyListener;
 
 
     public ForecastFragment() {
@@ -41,6 +43,14 @@ public class ForecastFragment extends Fragment {
         args.putInt(ARG_POSITION, i);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof IFragmentReadyListener)
+            iFragmentReadyListener = (IFragmentReadyListener) context;
+        else throw new RuntimeException(context + " must implement IFragmentReadyListener");
     }
 
     @Override
@@ -74,12 +84,18 @@ public class ForecastFragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
-        ((ForecastActivity) getActivity()).setForecastFragment(this, index);
+        iFragmentReadyListener.setForecastFragment(this, index);
         if (index > 0)
-            ((ForecastActivity) getActivity()).onFragmentsCreated();
+            iFragmentReadyListener.onFragmentReady();
     }
 
     public void showData(ForecastDataSet dataSet) {
         adapter.setItems(dataSet.getData());
+    }
+
+    public interface IFragmentReadyListener {
+        void setForecastFragment(ForecastFragment forecastFragment, int index);
+
+        void onFragmentReady();
     }
 }

@@ -35,7 +35,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ForecastActivity extends MvpAppCompatActivity implements ForecastView {
+public class ForecastActivity extends MvpAppCompatActivity implements ForecastView,
+        ForecastFragment.IFragmentReadyListener {
     private static final String KEY_SRL_ENABLED = "KEY_SRL_ENABLED";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -57,8 +58,8 @@ public class ForecastActivity extends MvpAppCompatActivity implements ForecastVi
     TextView tvPressure;
     @BindView(R.id.tvSummary)
     TextView tvSummary;
-    @BindView(R.id.tvTemperature)
-    TextView tvTemperature;
+    @BindView(R.id.tvTempDegrees)
+    TextView tvTempDegrees;
     @BindView(R.id.tvWindSpeed)
     TextView tvWindSpeed;
 
@@ -73,13 +74,13 @@ public class ForecastActivity extends MvpAppCompatActivity implements ForecastVi
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setupTabsNPages();
-        setupSwipeRefreshLayout();
+        setupSwipeRefreshLayout(savedInstanceState);
         setSupportActionBar(toolbar);
-        if (savedInstanceState != null)
-            srl.setEnabled(savedInstanceState.getBoolean(KEY_SRL_ENABLED));
     }
 
-    private void setupSwipeRefreshLayout() {
+    private void setupSwipeRefreshLayout(Bundle savedInstanceState) {
+        if (savedInstanceState != null)
+            srl.setEnabled(savedInstanceState.getBoolean(KEY_SRL_ENABLED));
         srl.setOnRefreshListener(() -> presenter.onRefresh());
         appBarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
             @Override
@@ -142,7 +143,7 @@ public class ForecastActivity extends MvpAppCompatActivity implements ForecastVi
         tvLastSync.setText(getString(R.string.last_sync, lastSync));
         tvPressure.setText(getString(R.string.pressure, currently.getPressure()));
         tvSummary.setText(getString(R.string.summmary, currently.getSummary()));
-        tvTemperature.setText(getString(R.string.temperature, currently.getTemperature()));
+        tvTempDegrees.setText(String.valueOf(currently.getTemperature()));
         tvWindSpeed.setText(getString(R.string.wind, currently.getWindSpeed()));
     }
 
@@ -185,11 +186,13 @@ public class ForecastActivity extends MvpAppCompatActivity implements ForecastVi
         dialog.show();
     }
 
-    public void onFragmentsCreated() {
-        presenter.onCreate();
-    }
-
+    @Override
     public void setForecastFragment(ForecastFragment fragment, int position) {
         pages.set(position, fragment);
+    }
+
+    @Override
+    public void onFragmentReady() {
+        presenter.onCreateViewState();
     }
 }
